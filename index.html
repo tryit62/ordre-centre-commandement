@@ -1,6 +1,6 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b09"><title>Centre de Commandement // L’Ordre</title><style>
 :root{color-scheme:dark;--bg:#090d0b;--fg:#e5e8e3;--sub:#9baa9d;--line:#34463b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#18231b,#070907 60%);color:var(--fg);font:14px/1.6 'Courier New',monospace}.wrap{max-width:1200px;margin:0 auto;padding:24px clamp(14px,4vw,36px)}.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px}small,.muted{color:var(--sub)}h1{font-size:clamp(20px,3vw,32px);letter-spacing:.1em;margin:8px 0}h2{font-size:17px;margin-top:0}button,input{font:inherit}button{background:#18251c;color:var(--fg);border:1px solid #667e6b;padding:11px 16px;min-height:45px;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}input{background:#0e1511;color:var(--fg);border:1px solid var(--line);border-radius:0;padding:12px;width:100%;min-height:44px}label{display:block;margin:14px 0 5px}section,.panel{border:1px solid var(--line);padding:20px;background:#0b100de8}.error{color:#f3b6a3}.ok{color:#b8dec4}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:16px;border:1px solid var(--line);background:#111b15}.metric strong{font-size:25px;display:block}.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;min-width:740px}th,td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;color:var(--sub)}tr[data-id]{cursor:pointer}tr[data-id]:hover{background:#17251a}.split{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}.history{max-height:300px;overflow:auto}.entry{border-bottom:1px solid var(--line);padding:10px 0;overflow-wrap:anywhere}.hidden{display:none!important}.status{margin:12px 0;min-height:23px}.pill{font-size:10px;border:1px solid var(--line);padding:5px 8px;color:var(--sub)}@media(max-width:850px){.split{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.grid{grid-template-columns:1fr}.wrap{padding:16px}}
-.actions{border:1px solid var(--line);padding:14px;margin:12px 0 24px}select,textarea{background:#0e1511;color:var(--fg);border:1px solid var(--line);width:100%;padding:12px;font:inherit}textarea{resize:vertical}.actions button{width:100%}.pill{overflow-wrap:anywhere}</style></head><body><main class="wrap"><div class="top"><small>L’ORDRE DES CINQ OMBRES // ADMINISTRATION</small><h1>CENTRE DE COMMANDEMENT</h1><div class="muted">ACCÈS RESTREINT · V2 / SUPERVISION ET INTERVENTION</div></div><section id="authView"><h2>IDENTIFICATION ADMINISTRATEUR</h2><p class="muted">Connectez-vous avec l'adresse e-mail et le mot de passe du compte créé dans Supabase Authentication, pas avec votre mot de passe de base de données.</p><form id="loginForm"><label for="email">ADRESSE E-MAIL</label><input type="email" id="email" autocomplete="username" required><label for="password">MOT DE PASSE</label><input type="password" id="password" autocomplete="current-password" required><div class="toolbar"><button type="submit" id="loginBtn">[ OUVRIR UNE SESSION ]</button></div></form><div id="loginStatus" class="status" role="status"></div></section><div id="dashboard" class="hidden"><div class="toolbar"><span class="pill" id="identity"></span><button id="refreshBtn">[ ACTUALISER ]</button><button id="logoutBtn">[ DÉCONNEXION ]</button></div><div id="dashStatus" role="status" class="status"></div><div class="grid"><div class="metric"><small>JOUEURS ENREGISTRÉS</small><strong id="totalCount">0</strong></div><div class="metric"><small>INITIÉS</small><strong id="initiateCount">0</strong></div><div class="metric"><small>DOSSIERS EN COURS</small><strong id="activeCount">0</strong></div></div><div class="split" style="margin-top:16px"><section><h2>REGISTRE DES MATRICULES</h2><label for="search">RECHERCHER</label><input id="search" placeholder="MATRICULE / DIVISION / DOSSIER"><div class="tablewrap"><table><thead><tr><th>MATRICULE</th><th>GRADE</th><th>DIVISION</th><th>DOSSIER / ÉTAPE</th><th>DERNIÈRE ACTIVITÉ</th></tr></thead><tbody id="playerRows"></tbody></table></div><p class="muted" id="empty">Aucun joueur synchronisé pour l'instant.</p></section><section><h2>DOSSIER INDIVIDUEL</h2><div class="muted" id="detailHelp">Sélectionnez un matricule dans le registre.</div><div id="detail" class="hidden"><div id="detailsText"></div><h2 style="margin-top:22px">DÉCISIONS ET ÉVÉNEMENTS</h2><div id="events" class="history"></div><h2 style="margin-top:22px">INTERVENTIONS À DISTANCE · V2</h2><div class="actions">
+.actions{border:1px solid var(--line);padding:14px;margin:12px 0 24px}select,textarea{background:#0e1511;color:var(--fg);border:1px solid var(--line);width:100%;padding:12px;font:inherit}textarea{resize:vertical}.actions button{width:100%}.pill{overflow-wrap:anywhere}</style></head><body><main class="wrap"><div class="top"><small>L’ORDRE DES CINQ OMBRES // ADMINISTRATION</small><h1>CENTRE DE COMMANDEMENT</h1><div class="muted">ACCÈS RESTREINT · V213.1 / SUPERVISION ET INTERVENTION</div></div><section id="authView"><h2>IDENTIFICATION ADMINISTRATEUR</h2><p class="muted">Connectez-vous avec l'adresse e-mail et le mot de passe du compte créé dans Supabase Authentication, pas avec votre mot de passe de base de données.</p><form id="loginForm"><label for="email">ADRESSE E-MAIL</label><input type="email" id="email" autocomplete="username" required><label for="password">MOT DE PASSE</label><input type="password" id="password" autocomplete="current-password" required><div class="toolbar"><button type="submit" id="loginBtn">[ OUVRIR UNE SESSION ]</button></div></form><div id="loginStatus" class="status" role="status"></div></section><div id="dashboard" class="hidden"><div class="toolbar"><span class="pill" id="identity"></span><button id="refreshBtn">[ ACTUALISER ]</button><button id="logoutBtn">[ DÉCONNEXION ]</button></div><div id="dashStatus" role="status" class="status"></div><div class="grid"><div class="metric"><small>JOUEURS ENREGISTRÉS</small><strong id="totalCount">0</strong></div><div class="metric"><small>INITIÉS</small><strong id="initiateCount">0</strong></div><div class="metric"><small>DOSSIERS EN COURS</small><strong id="activeCount">0</strong></div></div><div class="split" style="margin-top:16px"><section><h2>REGISTRE DES MATRICULES</h2><label for="search">RECHERCHER</label><input id="search" placeholder="MATRICULE / DIVISION / DOSSIER"><div class="tablewrap"><table><thead><tr><th>MATRICULE</th><th>GRADE</th><th>DIVISION</th><th>DOSSIER / ÉTAPE</th><th>DERNIÈRE ACTIVITÉ</th></tr></thead><tbody id="playerRows"></tbody></table></div><p class="muted" id="empty">Aucun joueur synchronisé pour l'instant.</p></section><section><h2>DOSSIER INDIVIDUEL</h2><div class="muted" id="detailHelp">Sélectionnez un matricule dans le registre.</div><div id="detail" class="hidden"><div id="detailsText"></div><h2 style="margin-top:22px">DÉCISIONS ET ÉVÉNEMENTS</h2><div id="events" class="history"></div><h2 style="margin-top:22px">INTERVENTIONS À DISTANCE · V2</h2><div class="actions">
 <label for="commandType">ACTION</label><select id="commandType"><option value="SEND_MESSAGE">MESSAGE PRIVÉ</option><option value="UNLOCK_STAGE">DÉBLOQUER UNE ÉTAPE</option><option value="ASSIGN_MISSION">ATTRIBUER UN DOSSIER</option><option value="GRANT_ACCESS">AUTORISER UN ACCÈS</option><option value="SET_GRADE">MODIFIER LE GRADE</option><option value="SET_DIVISION">MODIFIER LA DIVISION</option></select>
 <div id="messageFields"><label for="messageSubject">OBJET</label><input id="messageSubject" maxlength="150" placeholder="TRANSMISSION PRIORITAIRE"><label for="messageBody">MESSAGE</label><textarea id="messageBody" rows="5" maxlength="10000" placeholder="Texte de la transmission"></textarea></div>
 <div id="commandFields" class="hidden"><label for="commandValue">VALEUR</label><select id="commandValue"></select><label for="commandLabel" id="commandLabelTitle" class="hidden">LIBELLÉ DE LA MISSION</label><input id="commandLabel" class="hidden" maxlength="180" placeholder="Intitulé opérationnel"></div>
@@ -46,6 +46,53 @@ async function loadV2History(id){for(const [table,view,columns] of [['admin_comm
  if(!r.data?.length){e.append(text('small','Aucun élément.'));continue}for(const x of r.data){const el=document.createElement('div');el.className='entry';let title,body;if(table==='admin_commands'){title=x.command_type+' · '+x.status;body=JSON.stringify(x.payload)}else if(table==='player_messages'){title=x.subject+(x.read_at?' · LU':' · NON LU');body=x.body}else{title=x.access_key+(x.revoked_at?' · RÉVOQUÉ':' · ACTIF');body=''}el.append(text('small',stamp(x.created_at||x.granted_at)+' // '+title),text('div',body));e.append(el)}}}
 byId('commandType').addEventListener('change',v2TypeChange);v2TypeChange();
 byId('executeCommand').addEventListener('click',async()=>{byId('executeCommand').disabled=true;try{await requireAdmin();await v2Action()}catch(e){status('commandStatus','COMMANDE REFUSÉE : '+safeErr(e),true)}finally{byId('executeCommand').disabled=false}});
+
+
+// V213.1 — Raccordement des contrôles documentaires à Supabase.
+const v213Status=(message,error=false)=>status('v213Status',message,error);
+async function v213ExecuteAction(){
+ const b=byId('v213Execute'); b.disabled=true;
+ try{
+  await requireAdmin();
+  const action=byId('v213Action').value;
+  const doc=byId('v213Id').value.trim().toUpperCase();
+  const level=byId('v213Level').value;
+  const title=byId('v213Title').value.trim();
+  const body=byId('v213Body').value;
+  const requiresDoc=action!=='revoke-level';
+  if(requiresDoc&&!/^[A-Z0-9_-]{3,100}$/.test(doc))throw new Error('Référence documentaire invalide. Exemple : TEST-ARCH-001');
+  let fn, params;
+  if(action==='publish'){
+   if(!title||!body.trim())throw new Error('Titre et texte de l’archive requis.');
+   fn='v213_admin_publish';params={p_doc:doc,p_title:title,p_body:body,p_level:level,p_publish:true};
+  }else if(action==='unpublish'){
+   fn='v213_admin_unpublish';params={p_doc:doc};
+  }else if(['grant','revoke','revoke-level'].includes(action)){
+   if(!selected||!players.some(p=>p.id===selected))throw new Error('Sélectionnez d’abord un matricule dans le registre des joueurs.');
+   fn='v213_admin_access';params={p_player:selected,p_access:action==='revoke-level'?level:doc,p_grant:action==='grant'};
+  }else throw new Error('Action inconnue.');
+  if(!confirm('Confirmer '+action+' : '+(action==='revoke-level'?level:doc)+' ?')){v213Status('Action annulée.');return;}
+  v213Status('TRAITEMENT EN COURS...');
+  const {data,error}=await sb.rpc(fn,params);
+  if(error)throw error;
+  if(data===false)throw new Error('Aucun document concerné par cette opération.');
+  v213Status('OPÉRATION CONFIRMÉE : '+String(data));
+  if(selected)await loadV2History(selected);
+ }catch(e){v213Status('ÉCHEC : '+safeErr(e),true)}finally{b.disabled=false;}
+}
+async function v213LoadAudit(){
+ const out=byId('v213AuditList');out.replaceChildren();
+ try{
+  await requireAdmin();
+  if(!selected)throw new Error('Sélectionnez un joueur pour consulter son historique.');
+  const {data,error}=await sb.from('archive_reads').select('doc_id,read_at').eq('player_id',selected).order('read_at',{ascending:false}).limit(100);
+  if(error)throw error;
+  if(!data?.length){out.append(text('p','Aucune consultation enregistrée pour ce joueur.'));return;}
+  for(const entry of data){const el=document.createElement('div');el.className='entry';el.append(text('small',stamp(entry.read_at)+' // '+entry.doc_id));out.append(el)}
+ }catch(e){out.append(text('p','Lecture impossible : '+safeErr(e)))}
+}
+byId('v213Execute').addEventListener('click',v213ExecuteAction);
+byId('v213Audit').addEventListener('click',v213LoadAudit);
 
 init();
 </script></body></html>
