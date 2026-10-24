@@ -115,7 +115,7 @@ async function v214Generate(){
   const btn=byId('v214Generate');
   v214HideCode();
   const matricule=byId('v214Matricule').value.trim().toUpperCase();
-  if(!/^C-[A-Z0-9-]{4,32}$/.test(matricule)){
+  if(!/^(?:OCI-26-[A-Z0-9]{3}|C-[A-Z0-9-]{4,32})$/.test(matricule)){
     status('v214Status','MATRICULE INVALIDE : utilisez C- suivi de 4 à 32 lettres, chiffres ou tirets.',true);return;
   }
   btn.disabled=true;
